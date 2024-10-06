@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePagoLabel_idPago}" for="idPago" />
+                    <h:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.CreatePagoTitle_idPago}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idPago}"/>
+                    <h:outputLabel value="#{bundle.CreatePagoLabel_codigoPago}" for="codigoPago" />
+                    <h:inputText id="codigoPago" value="#{pagoController.selected.codigoPago}" title="#{bundle.CreatePagoTitle_codigoPago}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_codigoPago}"/>
+                    <h:outputLabel value="#{bundle.CreatePagoLabel_estadoPago}" for="estadoPago" />
+                    <h:inputText id="estadoPago" value="#{pagoController.selected.estadoPago}" title="#{bundle.CreatePagoTitle_estadoPago}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_estadoPago}"/>
+                    <h:outputLabel value="#{bundle.CreatePagoLabel_idOrden}" for="idOrden" />
+                    <h:selectOneMenu id="idOrden" value="#{pagoController.selected.idOrden}" title="#{bundle.CreatePagoTitle_idOrden}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idOrden}">
+                        <f:selectItems value="#{ordenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pagoController.create}" value="#{bundle.CreatePagoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.CreatePagoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePagoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

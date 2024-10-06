@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOrdenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_idOrden}" for="idOrden" />
+                    <h:inputText id="idOrden" value="#{ordenController.selected.idOrden}" title="#{bundle.EditOrdenTitle_idOrden}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_idOrden}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_cotosEnvio}" for="cotosEnvio" />
+                    <h:inputText id="cotosEnvio" value="#{ordenController.selected.cotosEnvio}" title="#{bundle.EditOrdenTitle_cotosEnvio}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_cotosEnvio}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_direccionEnvio}" for="direccionEnvio" />
+                    <h:inputTextarea rows="4" cols="30" id="direccionEnvio" value="#{ordenController.selected.direccionEnvio}" title="#{bundle.EditOrdenTitle_direccionEnvio}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_direccionEnvio}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_nombreDestinatario}" for="nombreDestinatario" />
+                    <h:inputText id="nombreDestinatario" value="#{ordenController.selected.nombreDestinatario}" title="#{bundle.EditOrdenTitle_nombreDestinatario}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_nombreDestinatario}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_telefonoDestinatario}" for="telefonoDestinatario" />
+                    <h:inputText id="telefonoDestinatario" value="#{ordenController.selected.telefonoDestinatario}" title="#{bundle.EditOrdenTitle_telefonoDestinatario}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_telefonoDestinatario}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_valorTotalCompra}" for="valorTotalCompra" />
+                    <h:inputText id="valorTotalCompra" value="#{ordenController.selected.valorTotalCompra}" title="#{bundle.EditOrdenTitle_valorTotalCompra}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_valorTotalCompra}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_fechaEnvio}" for="fechaEnvio" />
+                    <h:inputText id="fechaEnvio" value="#{ordenController.selected.fechaEnvio}" title="#{bundle.EditOrdenTitle_fechaEnvio}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_fechaEnvio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_estadoOrden}" for="estadoOrden" />
+                    <h:inputText id="estadoOrden" value="#{ordenController.selected.estadoOrden}" title="#{bundle.EditOrdenTitle_estadoOrden}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_estadoOrden}"/>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_idCarrito}" for="idCarrito" />
+                    <h:selectOneMenu id="idCarrito" value="#{ordenController.selected.idCarrito}" title="#{bundle.EditOrdenTitle_idCarrito}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_idCarrito}">
+                        <f:selectItems value="#{carritoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditOrdenLabel_idVendedor}" for="idVendedor" />
+                    <h:selectOneMenu id="idVendedor" value="#{ordenController.selected.idVendedor}" title="#{bundle.EditOrdenTitle_idVendedor}" required="true" requiredMessage="#{bundle.EditOrdenRequiredMessage_idVendedor}">
+                        <f:selectItems value="#{vendedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ordenController.update}" value="#{bundle.EditOrdenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOrdenViewLink}"/>
+                <br />
+                <h:commandLink action="#{ordenController.prepareList}" value="#{bundle.EditOrdenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOrdenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="title">
+            <h:outputText value="Urban Style"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="body">
+        </ui:define>
+        
+    </ui:composition>
+    
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br />
+        <h:link outcome="/carrito/List" value="Show All Carrito Items"/>
+        <br />
+        <h:link outcome="/orden/List" value="Show All Orden Items"/>
+        <br />
+        <h:link outcome="/pago/List" value="Show All Pago Items"/>
+        <br />
+        <h:link outcome="/producto/List" value="Show All Producto Items"/>
+        <br />
+        <h:link outcome="/usuarios/List" value="Show All Usuarios Items"/>
+        <br />
+        <h:link outcome="/vendedor/List" value="Show All Vendedor Items"/>
+    </h:body>
+
+
+
+
+
+
+</html>
+
